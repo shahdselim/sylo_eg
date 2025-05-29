@@ -295,6 +295,34 @@
     .products-dropdown-menu.active {
         max-height: 200px; /* Adjust as needed for content */
     }
+
+    /* Aesthetic for Ad Banners */
+    .ad-banner {
+        background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        border: 2px solid #ccc;
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        font-family: 'Montserrat', sans-serif;
+        color: #333;
+        animation: pulse 2s infinite ease-in-out;
+    }
+    .ad-banner h3 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #000;
+        margin-bottom: 10px;
+    }
+    .ad-banner p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        50% { transform: scale(1.01); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+        100% { transform: scale(1); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+    }
   </style>
 </head>
 <body class="bg-white font-['Montserrat'] flex flex-col min-h-screen">
@@ -373,19 +401,35 @@
   </div>
 
 
-  <section id="home" class="min-h-screen flex items-center justify-center bg-white text-black py-20">
-    <div class="container mx-auto px-4 text-center z-10">
+  <section id="home" class="min-h-screen flex flex-col items-center justify-center bg-white text-black py-20">
+    <div class="container mx-auto px-4 text-center z-10 flex-grow flex flex-col justify-center">
       <h2 class="text-6xl md:text-7xl font-extrabold mb-6 animate-fade-in-down">Elevate Your Apple Watch Style</h2>
       <p class="text-xl md:text-2xl text-gray-700 mb-10 max-w-2xl mx-auto animate-fade-in-up">Discover premium bands crafted for elegance, comfort, and durability. Express yourself with Sylo.</p>
       <a href="#products" id="shop-now-btn" class="bg-black text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg animate-fade-in">Shop All</a>
+    </div>
+    <div class="w-full max-w-5xl mt-12 px-4">
+        <div class="ad-banner">
+            <h3>EXCLUSIVE OFFER!</h3>
+            <p>Buy 2 Apple Watch Bands, Get 1 FREE! Mix & Match Your Style.</p>
+            <p class="mt-2 text-sm text-gray-700 font-bold">Use code: SYLOFREEBAND at checkout!</p>
+        </div>
     </div>
   </section>
 
   <section id="products" class="container mx-auto py-16 hidden">
     <h2 id="product-category-title" class="text-3xl font-bold text-black text-center mb-10">Our Collection</h2>
+
+    <div class="w-full max-w-5xl mx-auto my-8 px-4">
+        <div class="ad-banner">
+            <h3>LIMITED TIME DEAL!</h3>
+            <p>Upgrade Your Look: 20% Off All Leather Bands This Week!</p>
+            <p class="mt-2 text-sm text-gray-700 font-bold">No code needed. Discount applied automatically.</p>
+        </div>
+    </div>
+
     <div id="product-list" class="product-grid">
       </div>
-    <p id="no-products-found" class="text-center text-gray-600 mt-8 hidden">No products match your search.</p>
+    <p id="no-products-found" class="text-center text-gray-600 mt-8 hidden">No products match your search or filter.</p>
   </section>
 
   <section id="about" class="container mx-auto py-16 hidden">
@@ -551,19 +595,22 @@
   <section id="checkout" class="container mx-auto py-16 hidden">
     <h2 class="text-3xl font-bold text-black text-center mb-10">Checkout</h2>
     <div id="checkout-items" class="space-y-4 mb-6"></div>
-    <p id="checkout-total" class="text-xl font-semibold text-black mt-6 text-right"></p>
-    <div class="max-w-lg mx-auto mt-8">
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-black mb-2" for="checkout-full-name">Full Name</label>
-        <input type="text" id="checkout-full-name" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
-      </div>
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-black mb-2" for="checkout-email">Email</label>
-        <input type="email" id="checkout-email" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
+    <p id="checkout-summary-total" class="text-xl font-semibold text-black mt-6 text-right"></p>
+
+    <div class="max-w-lg mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
+      <h3 class="text-2xl font-bold text-black mb-6">Shipping Information</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-black mb-2" for="checkout-full-name">Full Name</label>
+          <input type="text" id="checkout-full-name" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
         </div>
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-black mb-2" for="checkout-city">City</label>
-        <select id="checkout-city" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
+        <div>
+          <label class="block text-sm font-medium text-black mb-2" for="checkout-email">Email</label>
+          <input type="email" id="checkout-email" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-black mb-2" for="checkout-city">City</label>
+          <select id="checkout-city" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
           <option value="" selected disabled>Select your city...</option> <option value="Cairo">Cairo (50 EGP shipping)</option>
           <option value="Alexandria">Alexandria (60 EGP shipping)</option>
           <option value="Giza">Giza (50 EGP shipping)</option>
@@ -571,16 +618,24 @@
           <option value="Aswan">Aswan (80 EGP shipping)</option>
           <option value="Hurghada">Hurghada (75 EGP shipping)</option>
         </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-black mb-2" for="checkout-street-address">Street Address</label>
+          <input type="text" id="checkout-street-address" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-black mb-2" for="checkout-additional-details">Additional Address Details (Optional)</label>
+          <textarea id="checkout-additional-details" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent"></textarea>
+        </div>
       </div>
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-black mb-2" for="checkout-street-address">Street Address</label>
-        <input type="text" id="checkout-street-address" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" required>
+
+      <h3 class="text-2xl font-bold text-black mt-10 mb-4">Promo Code</h3>
+      <div class="flex space-x-2 mb-6">
+        <input type="text" id="promo-code-input" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent" placeholder="Enter promo code">
+        <button id="apply-promo-btn" class="bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-black transition">Apply</button>
       </div>
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-black mb-2" for="checkout-additional-details">Additional Address Details (Optional)</label>
-        <textarea id="checkout-additional-details" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-black focus:border-transparent"></textarea>
-      </div>
-      <button id="place-order-btn" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Place Order</button>
+
+      <button id="place-order-btn" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition mt-8 w-full">Place Order</button>
     </div>
   </section>
 
@@ -599,730 +654,820 @@
 
 
   <script>
-    // --- Product Data (Categorized and with Egyptian prices 120-200 EGP) ---
-    const productsData = {
-        'stainless-steel': [
-            { id: 1, name: 'Classic Steel Band', price: 179.99, image: 'images/1.jpg', description: 'Premium stainless steel band for a sophisticated look.' },
-            { id: 2, name: 'Milanese Loop', price: 159.99, image: 'images/5.jpg', description: 'Elegant stainless steel mesh for a refined, modern style.' },
-            { id: 3, name: 'Heavy Duty Steel', price: 189.99, image: 'images/7.jpg', description: 'Robust steel band for maximum durability.' },
-            { id: 4, name: 'Slim Steel Bracelet', price: 164.99, image: 'images/10.jpg', description: 'Thin and comfortable steel bracelet for everyday wear.' },
-            { id: 5, name: 'Two-Tone Steel', price: 174.99, image: 'images/12.jpg', description: 'Stylish two-tone steel band with a unique design.' },
-        ],
-        'stretchable-woven-nylon': [
-            { id: 6, name: 'Sport Loop Nylon', price: 139.99, image: 'images/15.jpg', description: 'Lightweight and breathable nylon band for active lifestyles.' },
-            { id: 7, name: 'Braided Solo Loop', price: 144.99, image: 'images/16.jpg', description: 'Comfortable braided loop for all-day wear.' },
-            { id: 8, name: 'Rainbow Woven Nylon', price: 142.99, image: 'images/18.jpg', description: 'Vibrant rainbow woven nylon band for a playful look.' },
-            { id: 9, name: 'Reflective Nylon', price: 145.99, image: 'images/3.jpg', description: 'Nylon band with reflective threads for visibility.' },
-            { id: 10, name: 'Adjustable Woven', price: 138.99, image: 'images/19.jpg', description: 'Fully adjustable woven nylon band for a perfect fit.' },
-        ],
-        'silicon': [
-            { id: 11, name: 'Sport Silicone Band', price: 129.99, image: 'images/20.jpg', description: 'Durable and comfortable silicone band for active lifestyles.' },
-            { id: 12, name: 'Ventilated Silicone', price: 132.99, image: 'images/21.jpg', description: 'Silicone band with perforations for improved breathability.' },
-            { id: 13, name: 'Rugged Silicone', price: 134.99, image: 'images/22.jpg', description: 'Heavy-duty silicone band for outdoor adventures.' },
-            { id: 14, name: 'Slim Silicone Strap', price: 128.99, image: 'images/26.jpg', description: 'Thin and lightweight silicone strap for minimalist style.' },
-            { id: 15, name: 'Patterned Silicone', price: 130.99, image: 'images/27.jpg', description: 'Silicone band with a subtle pattern for added flair.' },
-        ],
-        'leather': [
-            { id: 16, name: 'Classic Leather Band', price: 149.99, image: 'images/4.jpg', description: 'Premium leather band for a timeless, sophisticated look.' },
-            { id: 17, name: 'Vintage Leather', price: 159.99, image: 'images/13.jpg', description: 'Aged leather band for a classic, vintage vibe.' },
-            { id: 18, name: 'Modern Buckle Leather', price: 154.99, image: 'images/17.jpg', description: 'Sleek leather band with a modern buckle design.' },
-            { id: 19, name: 'Crocodile Grain Leather', price: 165.99, image: 'images/25.jpg', description: 'Luxurious leather band with a crocodile grain texture.' },
-            { id: 20, name: 'Perforated Leather', price: 152.99, image: 'images/24.jpg', description: 'Leather band with perforations for a sporty yet elegant feel.' },
-        ]
-    };
+   // --- Product Data (Categorized and with Egyptian prices 120-200 EGP) ---
+const productsData = {
+    'stainless-steel': [
+        { id: 1, name: 'Classic Steel Band', price: 179.99, image: 'images/1.jpg', description: 'Premium stainless steel band for a sophisticated look.' },
+        { id: 2, name: 'Milanese Loop', price: 159.99, image: 'images/5.jpg', description: 'Elegant stainless steel mesh for a refined, modern style.' },
+        { id: 3, name: 'Heavy Duty Steel', price: 189.99, image: 'images/7.jpg', description: 'Robust steel band for maximum durability.' },
+        { id: 4, name: 'Slim Steel Bracelet', price: 164.99, image: 'images/10.jpg', description: 'Thin and comfortable steel bracelet for everyday wear.' },
+        { id: 5, name: 'Two-Tone Steel', price: 174.99, image: 'images/12.jpg', description: 'Stylish two-tone steel band with a unique design.' },
+    ],
+    'stretchable-woven-nylon': [
+        { id: 6, name: 'Sport Loop Nylon', price: 139.99, image: 'images/15.jpg', description: 'Lightweight and breathable nylon band for active lifestyles.' },
+        { id: 7, name: 'Braided Solo Loop', price: 144.99, image: 'images/16.jpg', description: 'Comfortable braided loop for all-day wear.' },
+        { id: 8, name: 'Rainbow Woven Nylon', price: 142.99, image: 'images/18.jpg', description: 'Vibrant rainbow woven nylon band for a playful look.' },
+        { id: 9, name: 'Reflective Nylon', price: 145.99, image: 'images/3.jpg', description: 'Nylon band with reflective threads for visibility.' },
+        { id: 10, name: 'Adjustable Woven', price: 138.99, image: 'images/19.jpg', description: 'Fully adjustable woven nylon band for a perfect fit.' },
+    ],
+    'silicon': [
+        { id: 11, name: 'Sport Silicone Band', price: 129.99, image: 'images/20.jpg', description: 'Durable and comfortable silicone band for active lifestyles.' },
+        { id: 12, name: 'Ventilated Silicone', price: 132.99, image: 'images/21.jpg', description: 'Silicone band with perforations for improved breathability.' },
+        { id: 13, name: 'Rugged Silicone', price: 134.99, image: 'images/22.jpg', description: 'Heavy-duty silicone band for outdoor adventures.' },
+        { id: 14, name: 'Slim Silicone Strap', price: 128.99, image: 'images/26.jpg', description: 'Thin and lightweight silicone strap for minimalist style.' },
+        { id: 15, name: 'Patterned Silicone', price: 130.99, image: 'images/27.jpg', description: 'Silicone band with a subtle pattern for added flair.' },
+    ],
+    'leather': [
+        { id: 16, name: 'Classic Leather Band', price: 149.99, image: 'images/4.jpg', description: 'Premium leather band for a timeless, sophisticated look.' },
+        { id: 17, name: 'Vintage Leather', price: 159.99, image: 'images/13.jpg', description: 'Aged leather band for a classic, vintage vibe.' },
+        { id: 18, name: 'Modern Buckle Leather', price: 154.99, image: 'images/17.jpg', description: 'Sleek leather band with a modern buckle design.' },
+        { id: 19, name: 'Crocodile Grain Leather', price: 165.99, image: 'images/25.jpg', description: 'Luxurious leather band with a crocodile grain texture.' },
+        { id: 20, name: 'Perforated Leather', price: 152.99, image: 'images/24.jpg', description: 'Leather band with perforations for a sporty yet elegant feel.' },
+    ]
+};
 
-    // Combine all products for "Shop All" view
-    const allProductsCombined = Object.values(productsData).flat();
+// Combine all products for "Shop All" view
+const allProductsCombined = Object.values(productsData).flat();
 
-    // Shipping fees based on city (in EGP)
-    const shippingFees = {
-      "Cairo": 20,
-      "Alexandria": 25,
-      "Giza": 20,
-      "Luxor": 30,
-      "Aswan": 35,
-      "Hurghada": 30
-    };
+// Shipping fees based on city (in EGP)
+const shippingFees = {
+  "Cairo": 20,
+  "Alexandria": 25,
+  "Giza": 20,
+  "Luxor": 30,
+  "Aswan": 35,
+  "Hurghada": 30
+};
 
-    // Initialize cart from localStorage or empty array
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+// Initialize cart from localStorage or empty array
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    // DOM elements
-    const productList = document.getElementById('product-list');
-    const productCategoryTitle = document.getElementById('product-category-title');
-    const noProductsFoundMessage = document.getElementById('no-products-found');
-    const cartItems = document.getElementById('cart-items'); // For the main cart section
-    const cartItemsOverlay = document.getElementById('cart-items-overlay'); // For the cart overlay
-    const cartTotal = document.getElementById('cart-total'); // For the main cart section
-    const cartTotalOverlay = document.getElementById('cart-total-overlay'); // For the cart overlay
-    const checkoutItems = document.getElementById('checkout-items');
-    const checkoutTotal = document.getElementById('checkout-total');
-    const checkoutCity = document.getElementById('checkout-city');
-    const cartCount = document.getElementById('cart-count');
-    const productModal = document.getElementById('product-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalImage = document.getElementById('modal-image');
-    const modalPrice = document.getElementById('modal-price');
-    const modalDescription = document.getElementById('modal-description');
-    const modalSize = document.getElementById('modal-size');
-    const addToCartBtn = document.getElementById('add-to-cart');
-    const closeModalTopBtn = document.getElementById('close-modal-top');
-    const closeModalBottomBtn = document.getElementById('close-modal-bottom');
-    const checkoutBtn = document.getElementById('checkout-btn');
-    const placeOrderBtn = document.getElementById('place-order-btn');
+// DOM elements
+const productList = document.getElementById('product-list');
+const productCategoryTitle = document.getElementById('product-category-title');
+const noProductsFoundMessage = document.getElementById('no-products-found');
+const cartItems = document.getElementById('cart-items'); // For the main cart section
+const cartItemsOverlay = document.getElementById('cart-items-overlay'); // For the cart overlay
+const cartTotal = document.getElementById('cart-total'); // For the main cart section
+const cartTotalOverlay = document.getElementById('cart-total-overlay'); // For the cart overlay
+const checkoutItems = document.getElementById('checkout-items');
+const checkoutTotal = document.getElementById('checkout-total');
+const checkoutCity = document.getElementById('checkout-city');
+const cartCount = document.getElementById('cart-count');
+const productModal = document.getElementById('product-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalImage = document.getElementById('modal-image');
+const modalPrice = document.getElementById('modal-price');
+const modalDescription = document.getElementById('modal-description');
+const modalSize = document.getElementById('modal-size');
+const addToCartBtn = document.getElementById('add-to-cart');
+const closeModalTopBtn = document.getElementById('close-modal-top');
+const closeModalBottomBtn = document.getElementById('close-modal-bottom');
+const checkoutBtn = document.getElementById('checkout-btn');
+const placeOrderBtn = document.getElementById('place-order-btn');
 
-    // Section elements
-    const homeSection = document.getElementById('home');
-    const productsSection = document.getElementById('products');
-    const aboutSection = document.getElementById('about');
-    const contactSection = document.getElementById('contact');
-    const cartSection = document.getElementById('cart');
-    const checkoutSection = document.getElementById('checkout');
-    const policySection = document.getElementById('policy');
-    const supportSection = document.getElementById('support');
-    const signupModal = document.getElementById('signup-modal'); // Sign Up Modal element
+// Section elements
+const homeSection = document.getElementById('home');
+const productsSection = document.getElementById('products');
+const aboutSection = document.getElementById('about');
+const contactSection = document.getElementById('contact');
+const cartSection = document.getElementById('cart');
+const checkoutSection = document.getElementById('checkout');
+const policySection = document.getElementById('policy');
+const supportSection = document.getElementById('support');
+const signupModal = document.getElementById('signup-modal'); // Sign Up Modal element
 
-    // Navigation elements
-    const syloLogo = document.getElementById('sylo-logo');
-    const shopNowBtn = document.getElementById('shop-now-btn');
-    const hamburgerMenuToggle = document.getElementById('hamburger-menu-toggle'); // New hamburger icon
-    const searchIcon = document.getElementById('search-icon');
-    const cartIcon = document.getElementById('cart-icon');
-    const signupButtonNav = document.getElementById('signup-button-nav'); // Sign Up button in nav
+// Navigation elements
+const syloLogo = document.getElementById('sylo-logo');
+const shopNowBtn = document.getElementById('shop-now-btn');
+const hamburgerMenuToggle = document.getElementById('hamburger-menu-toggle'); // New hamburger icon
+const searchIcon = document.getElementById('search-icon');
+const cartIcon = document.getElementById('cart-icon');
+const signupButtonNav = document.getElementById('signup-button-nav'); // Sign Up button in nav
 
-    // Overlays
-    const leftSlideMenuOverlay = document.getElementById('left-slide-menu-overlay');
-    const closeLeftMenuBtn = document.getElementById('close-left-menu');
-    const searchOverlay = document.getElementById('search-overlay');
-    const closeSearchOverlayBtn = document.getElementById('close-search-overlay');
-    const overlaySearchBar = document.getElementById('overlay-search-bar');
-    const cartOverlay = document.getElementById('cart-overlay');
-    const closeCartOverlayBtn = document.getElementById('close-cart-overlay');
-    const proceedToCheckoutOverlayBtn = document.getElementById('proceed-to-checkout-overlay-btn');
-    const emptyCartMessage = document.getElementById('empty-cart-message');
-    const closeSignupModalBtn = document.getElementById('close-signup-modal'); // Close button for Sign Up modal
+// Overlays
+const leftSlideMenuOverlay = document.getElementById('left-slide-menu-overlay');
+const closeLeftMenuBtn = document.getElementById('close-left-menu');
+const searchOverlay = document.getElementById('search-overlay');
+const closeSearchOverlayBtn = document.getElementById('close-search-overlay');
+const overlaySearchBar = document.getElementById('overlay-search-bar');
+const cartOverlay = document.getElementById('cart-overlay');
+const closeCartOverlayBtn = document.getElementById('close-cart-overlay');
+const proceedToCheckoutOverlayBtn = document.getElementById('proceed-to-checkout-overlay-btn');
+const emptyCartMessage = document.getElementById('empty-cart-message');
+const closeSignupModalBtn = document.getElementById('close-signup-modal'); // Close button for Sign Up modal
 
-    // Sign Up/Login Modal specific elements
-    const signupModalTitle = document.getElementById('signup-modal-title');
-    const signupFormContainer = document.getElementById('signup-form-container');
-    const loginFormContainer = document.getElementById('login-form-container');
-    const showLoginLink = document.getElementById('show-login-link');
-    const showSignupLink = document.getElementById('show-signup-link');
+// Sign Up/Login Modal specific elements
+const signupModalTitle = document.getElementById('signup-modal-title');
+const signupFormContainer = document.getElementById('signup-form-container');
+const loginFormContainer = document.getElementById('login-form-container');
+const showLoginLink = document.getElementById('show-login-link');
+const showSignupLink = document.getElementById('show-signup-link');
 
-    // Left Slide Menu Products Toggle
-    const productsMenuToggleInSlide = document.getElementById('products-menu-toggle-in-slide');
-    const productsDropdownInSlide = document.getElementById('products-dropdown-in-slide');
+// Left Slide Menu Products Toggle
+const productsMenuToggleInSlide = document.getElementById('products-menu-toggle-in-slide');
+const productsDropdownInSlide = document.getElementById('products-dropdown-in-slide');
 
 
-    // Custom Alert Elements
-    const customAlertOverlay = document.getElementById('custom-alert-overlay');
-    const customAlertMessage = document.getElementById('custom-alert-message');
-    const customAlertOkBtn = document.getElementById('custom-alert-ok-btn');
+// Custom Alert Elements
+const customAlertOverlay = document.getElementById('custom-alert-overlay');
+const customAlertMessage = document.getElementById('custom-alert-message');
+const customAlertOkBtn = document.getElementById('custom-alert-ok-btn');
 
-    // Function to show custom alert
-    function showCustomAlert(message) {
-        customAlertMessage.textContent = message;
-        customAlertOverlay.classList.remove('hidden');
+// Function to show custom alert
+function showCustomAlert(message) {
+    customAlertMessage.textContent = message;
+    customAlertOverlay.classList.remove('hidden');
+}
+
+// Event listener for custom alert OK button
+customAlertOkBtn.addEventListener('click', () => {
+    customAlertOverlay.classList.add('hidden');
+});
+
+// --- Overlay Toggle Functions ---
+function toggleLeftSlideMenu() {
+    leftSlideMenuOverlay.classList.toggle('open');
+    document.body.style.overflow = leftSlideMenuOverlay.classList.contains('open') ? 'hidden' : 'auto';
+}
+
+function toggleSearchOverlay() {
+    searchOverlay.classList.toggle('open');
+    document.body.style.overflow = searchOverlay.classList.contains('open') ? 'hidden' : 'auto';
+    if (searchOverlay.classList.contains('open')) {
+        overlaySearchBar.focus(); // Focus on the search bar when it opens
     }
+}
 
-    // Event listener for custom alert OK button
-    customAlertOkBtn.addEventListener('click', () => {
-        customAlertOverlay.classList.add('hidden');
+function toggleCartOverlay() {
+    cartOverlay.classList.toggle('open');
+    document.body.style.overflow = cartOverlay.classList.contains('open') ? 'hidden' : 'auto';
+    updateCartDisplayOverlay(); // Update cart content when opening
+}
+
+function toggleSignupModal() {
+    signupModal.classList.toggle('open');
+    signupModal.classList.toggle('hidden'); // Toggle hidden class for visibility
+    document.body.style.overflow = signupModal.classList.contains('open') ? 'hidden' : 'auto';
+    // Ensure signup form is shown by default when modal opens
+    showSignupForm();
+}
+
+function showSignupForm() {
+    signupModalTitle.textContent = 'Join Our Community!';
+    signupFormContainer.classList.remove('hidden');
+    loginFormContainer.classList.add('hidden');
+}
+
+function showLoginForm() {
+    signupModalTitle.textContent = 'Welcome Back!';
+    signupFormContainer.classList.add('hidden');
+    loginFormContainer.classList.remove('hidden');
+}
+
+// --- Event Listeners for Overlays ---
+hamburgerMenuToggle.addEventListener('click', toggleLeftSlideMenu);
+closeLeftMenuBtn.addEventListener('click', toggleLeftSlideMenu);
+searchIcon.addEventListener('click', toggleSearchOverlay);
+closeSearchOverlayBtn.addEventListener('click', toggleSearchOverlay);
+cartIcon.addEventListener('click', toggleCartOverlay);
+closeCartOverlayBtn.addEventListener('click', toggleCartOverlay);
+signupButtonNav.addEventListener('click', toggleSignupModal); // Open Sign Up modal
+closeSignupModalBtn.addEventListener('click', toggleSignupModal); // Close Sign Up modal
+showLoginLink.addEventListener('click', (e) => { e.preventDefault(); showLoginForm(); });
+showSignupLink.addEventListener('click', (e) => { e.preventDefault(); showSignupForm(); });
+
+
+// Close overlays if clicked outside (on the dark background)
+leftSlideMenuOverlay.addEventListener('click', (event) => {
+    if (event.target === leftSlideMenuOverlay) {
+        toggleLeftSlideMenu();
+    }
+});
+searchOverlay.addEventListener('click', (event) => {
+    if (event.target === searchOverlay) {
+        toggleSearchOverlay();
+    }
+});
+cartOverlay.addEventListener('click', (event) => {
+    if (event.target === cartOverlay) {
+        toggleCartOverlay();
+    }
+});
+signupModal.addEventListener('click', (event) => {
+    if (event.target === signupModal) {
+        toggleSignupModal();
+    }
+});
+
+
+// --- Product Display Logic ---
+function formatCategoryName(name) {
+    return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+function displayProducts(category = 'all', query = '') { // Default to 'all' products
+  productList.innerHTML = ''; // Clear previous products
+  noProductsFoundMessage.classList.add('hidden'); // Hide 'no products' message initially
+
+  let productsToDisplay = [];
+  if (category === 'all') {
+      productsToDisplay = allProductsCombined;
+      productCategoryTitle.textContent = 'All Products';
+  } else if (productsData[category]) {
+      productsToDisplay = productsData[category];
+      productCategoryTitle.textContent = formatCategoryName(category) + ' Collection';
+  } else {
+      // Fallback if an invalid category is passed
+      productsToDisplay = allProductsCombined;
+      productCategoryTitle.textContent = 'All Products';
+  }
+
+  // Apply search query filter if present
+  const filteredByQuery = productsToDisplay.filter(product =>
+    product.name.toLowerCase().includes(query.toLowerCase()) ||
+    product.description.toLowerCase().includes(query.toLowerCase())
+  );
+
+  if (filteredByQuery.length === 0) {
+    noProductsFoundMessage.classList.remove('hidden');
+  } else {
+    filteredByQuery.forEach(product => {
+      const productCard = document.createElement('div');
+      productCard.className = 'product-card bg-white rounded-lg shadow-md p-4 cursor-pointer flex flex-col justify-between';
+      productCard.innerHTML = `
+        <div>
+          <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded mb-4" onerror="this.onerror=null;this.src='https://placehold.co/300x200/E2E8F0/AAAAAA?text=Image+Not+Available';">
+          <h3 class="text-xl font-semibold text-black">${product.name}</h3>
+        </div>
+        <p class="text-gray-600 mt-2">EGP ${product.price.toFixed(2)}</p>
+      `;
+      productCard.addEventListener('click', () => showProductDetails(product));
+      productList.appendChild(productCard);
     });
+  }
+}
 
-    // --- Overlay Toggle Functions ---
-    function toggleLeftSlideMenu() {
-        leftSlideMenuOverlay.classList.toggle('open');
-        document.body.style.overflow = leftSlideMenuOverlay.classList.contains('open') ? 'hidden' : 'auto';
-    }
-
-    function toggleSearchOverlay() {
-        searchOverlay.classList.toggle('open');
-        document.body.style.overflow = searchOverlay.classList.contains('open') ? 'hidden' : 'auto';
-        if (searchOverlay.classList.contains('open')) {
-            overlaySearchBar.focus(); // Focus on the search bar when it opens
-        }
-    }
-
-    function toggleCartOverlay() {
-        cartOverlay.classList.toggle('open');
-        document.body.style.overflow = cartOverlay.classList.contains('open') ? 'hidden' : 'auto';
-        updateCartDisplayOverlay(); // Update cart content when opening
-    }
-
-    function toggleSignupModal() {
-        signupModal.classList.toggle('open');
-        signupModal.classList.toggle('hidden'); // Toggle hidden class for visibility
-        document.body.style.overflow = signupModal.classList.contains('open') ? 'hidden' : 'auto';
-        // Ensure signup form is shown by default when modal opens
-        showSignupForm();
-    }
-
-    function showSignupForm() {
-        signupModalTitle.textContent = 'Join Our Community!';
-        signupFormContainer.classList.remove('hidden');
-        loginFormContainer.classList.add('hidden');
-    }
-
-    function showLoginForm() {
-        signupModalTitle.textContent = 'Welcome Back!';
-        signupFormContainer.classList.add('hidden');
-        loginFormContainer.classList.remove('hidden');
-    }
-
-    // --- Event Listeners for Overlays ---
-    hamburgerMenuToggle.addEventListener('click', toggleLeftSlideMenu);
-    closeLeftMenuBtn.addEventListener('click', toggleLeftSlideMenu);
-    searchIcon.addEventListener('click', toggleSearchOverlay);
-    closeSearchOverlayBtn.addEventListener('click', toggleSearchOverlay);
-    cartIcon.addEventListener('click', toggleCartOverlay);
-    closeCartOverlayBtn.addEventListener('click', toggleCartOverlay);
-    signupButtonNav.addEventListener('click', toggleSignupModal); // Open Sign Up modal
-    closeSignupModalBtn.addEventListener('click', toggleSignupModal); // Close Sign Up modal
-    showLoginLink.addEventListener('click', (e) => { e.preventDefault(); showLoginForm(); });
-    showSignupLink.addEventListener('click', (e) => { e.preventDefault(); showSignupForm(); });
+// Event listener for search bar input in overlay
+overlaySearchBar.addEventListener('input', (e) => {
+  // When typing in search, automatically navigate to products section if not already there
+  if (productsSection.classList.contains('hidden')) {
+    showSection('products');
+  }
+  // Get the currently displayed category to filter within it
+  // This logic needs to be careful if 'All Products' is currently displayed
+  const currentCategoryTitle = productCategoryTitle.textContent;
+  let currentCategory = 'all'; // Default to all if title is 'All Products' or unknown
+  if (currentCategoryTitle.includes('Collection')) {
+      currentCategory = currentCategoryTitle.replace(' Collection', '').toLowerCase().replace(/ /g, '-');
+  }
+  displayProducts(currentCategory, e.target.value);
+});
 
 
-    // Close overlays if clicked outside (on the dark background)
-    leftSlideMenuOverlay.addEventListener('click', (event) => {
-        if (event.target === leftSlideMenuOverlay) {
-            toggleLeftSlideMenu();
-        }
+// Show product details in modal
+function showProductDetails(product) {
+  modalTitle.textContent = product.name;
+  modalImage.src = product.image;
+  modalPrice.textContent = `EGP ${product.price.toFixed(2)}`;
+  modalDescription.textContent = product.description;
+  productModal.classList.remove('hidden');
+  productModal.classList.add('show');
+  document.body.style.overflow = 'hidden'; // Disable body scroll
+
+
+  addToCartBtn.onclick = () => { // Re-assign onclick to ensure correct product context
+    addToCart(product, modalSize.value);
+    closeModal();
+  };
+}
+
+// Function to close the modal
+function closeModal() {
+    productModal.classList.add('hidden');
+    productModal.classList.remove('show');
+    document.body.style.overflow = 'auto'; // Re-enable body scroll
+}
+
+// Add product to cart
+function addToCart(product, size) {
+  const cartItem = { ...product, size, quantity: 1 };
+  const existingItem = cart.find(item => item.id === product.id && item.size === size);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push(cartItem);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart(); // Update main cart section
+  updateCartDisplayOverlay(); // Update cart overlay
+  showCustomAlert(`${product.name} (${size}) added to cart!`);
+}
+
+// Update cart display for main cart section
+function updateCart() {
+  cartItems.innerHTML = '';
+  let total = 0;
+  if (cart.length === 0) {
+    cartItems.innerHTML = '<p class="text-gray-600 text-center">Your cart is empty.</p>';
+    cartTotal.textContent = ''; // Clear total if cart is empty
+    checkoutBtn.classList.add('hidden'); // Hide checkout button if cart is empty
+  } else {
+    checkoutBtn.classList.remove('hidden'); // Show checkout button if cart has items
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+      const cartItem = document.createElement('div');
+      cartItem.className = 'flex justify-between items-center bg-white p-4 rounded-lg shadow';
+      cartItem.innerHTML = `
+        <div class="flex-grow">
+          <h3 class="text-lg font-semibold text-black">${item.name} (${item.size})</h3>
+          <p class="text-gray-600">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
+        </div>
+        <button class="text-red-500 hover:text-red-700 font-semibold ml-4 px-3 py-1 rounded-md border border-red-500 hover:bg-red-50 transition-colors" onclick="removeFromCart(${index})">Remove</button>
+      `;
+      cartItems.appendChild(cartItem);
     });
-    searchOverlay.addEventListener('click', (event) => {
-        if (event.target === searchOverlay) {
-            toggleSearchOverlay();
-        }
-    });
-    cartOverlay.addEventListener('click', (event) => {
-        if (event.target === cartOverlay) {
-            toggleCartOverlay();
-        }
-    });
-    signupModal.addEventListener('click', (event) => {
-        if (event.target === signupModal) {
-            toggleSignupModal();
-        }
-    });
+    cartTotal.textContent = `Total (excluding shipping): EGP ${total.toFixed(2)}`;
+  }
+  cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
 
+// Update cart display for the cart overlay
+function updateCartDisplayOverlay() {
+    cartItemsOverlay.innerHTML = ''; // Clear existing items
+    let total = 0;
 
-    // --- Product Display Logic ---
-    function formatCategoryName(name) {
-        return name.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    }
-
-    function displayProducts(category = 'all', query = '') { // Default to 'all' products
-      productList.innerHTML = ''; // Clear previous products
-      noProductsFoundMessage.classList.add('hidden'); // Hide 'no products' message initially
-
-      let productsToDisplay = [];
-      if (category === 'all') {
-          productsToDisplay = allProductsCombined;
-          productCategoryTitle.textContent = 'All Products';
-      } else if (productsData[category]) {
-          productsToDisplay = productsData[category];
-          productCategoryTitle.textContent = formatCategoryName(category) + ' Collection';
-      } else {
-          // Fallback if an invalid category is passed
-          productsToDisplay = allProductsCombined;
-          productCategoryTitle.textContent = 'All Products';
-      }
-
-      // Apply search query filter if present
-      const filteredByQuery = productsToDisplay.filter(product =>
-        product.name.toLowerCase().includes(query.toLowerCase()) ||
-        product.description.toLowerCase().includes(query.toLowerCase())
-      );
-
-      if (filteredByQuery.length === 0) {
-        noProductsFoundMessage.classList.remove('hidden');
-      } else {
-        filteredByQuery.forEach(product => {
-          const productCard = document.createElement('div');
-          productCard.className = 'product-card bg-white rounded-lg shadow-md p-4 cursor-pointer flex flex-col justify-between';
-          productCard.innerHTML = `
-            <div>
-              <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover rounded mb-4" onerror="this.onerror=null;this.src='https://placehold.co/300x200/E2E8F0/AAAAAA?text=Image+Not+Available';">
-              <h3 class="text-xl font-semibold text-black">${product.name}</h3>
-            </div>
-            <p class="text-gray-600 mt-2">EGP ${product.price.toFixed(2)}</p>
-          `;
-          productCard.addEventListener('click', () => showProductDetails(product));
-          productList.appendChild(productCard);
-        });
-      }
-    }
-
-    // Event listener for search bar input in overlay
-    overlaySearchBar.addEventListener('input', (e) => {
-      // When typing in search, automatically navigate to products section if not already there
-      if (productsSection.classList.contains('hidden')) {
-        showSection('products');
-      }
-      // Get the currently displayed category to filter within it
-      // This logic needs to be careful if 'All Products' is currently displayed
-      const currentCategoryTitle = productCategoryTitle.textContent;
-      let currentCategory = 'all'; // Default to all if title is 'All Products' or unknown
-      if (currentCategoryTitle.includes('Collection')) {
-          currentCategory = currentCategoryTitle.replace(' Collection', '').toLowerCase().replace(/ /g, '-');
-      }
-      displayProducts(currentCategory, e.target.value);
-    });
-
-
-    // Show product details in modal
-    function showProductDetails(product) {
-      modalTitle.textContent = product.name;
-      modalImage.src = product.image;
-      modalPrice.textContent = `EGP ${product.price.toFixed(2)}`;
-      modalDescription.textContent = product.description;
-      productModal.classList.remove('hidden');
-      productModal.classList.add('show');
-      document.body.style.overflow = 'hidden'; // Disable body scroll
-
-
-      addToCartBtn.onclick = () => { // Re-assign onclick to ensure correct product context
-        addToCart(product, modalSize.value);
-        closeModal();
-      };
-    }
-
-    // Function to close the modal
-    function closeModal() {
-        productModal.classList.add('hidden');
-        productModal.classList.remove('show');
-        document.body.style.overflow = 'auto'; // Re-enable body scroll
-    }
-
-    // Add product to cart
-    function addToCart(product, size) {
-      const cartItem = { ...product, size, quantity: 1 };
-      const existingItem = cart.find(item => item.id === product.id && item.size === size);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push(cartItem);
-      }
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart(); // Update main cart section
-      updateCartDisplayOverlay(); // Update cart overlay
-      showCustomAlert(`${product.name} (${size}) added to cart!`);
-    }
-
-    // Update cart display for main cart section
-    function updateCart() {
-      cartItems.innerHTML = '';
-      let total = 0;
-      if (cart.length === 0) {
-        cartItems.innerHTML = '<p class="text-gray-600 text-center">Your cart is empty.</p>';
-        cartTotal.textContent = ''; // Clear total if cart is empty
-        checkoutBtn.classList.add('hidden'); // Hide checkout button if cart is empty
-      } else {
-        checkoutBtn.classList.remove('hidden'); // Show checkout button if cart has items
+    if (cart.length === 0) {
+        emptyCartMessage.classList.remove('hidden');
+    } else {
+        emptyCartMessage.classList.add('hidden');
         cart.forEach((item, index) => {
-          total += item.price * item.quantity;
-          const cartItem = document.createElement('div');
-          cartItem.className = 'flex justify-between items-center bg-white p-4 rounded-lg shadow';
-          cartItem.innerHTML = `
-            <div class="flex-grow">
-              <h3 class="text-lg font-semibold text-black">${item.name} (${item.size})</h3>
-              <p class="text-gray-600">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
-            </div>
-            <button class="text-red-500 hover:text-red-700 font-semibold ml-4 px-3 py-1 rounded-md border border-red-500 hover:bg-red-50 transition-colors" onclick="removeFromCart(${index})">Remove</button>
-          `;
-          cartItems.appendChild(cartItem);
-        });
-        cartTotal.textContent = `Total (excluding shipping): EGP ${total.toFixed(2)}`;
-      }
-      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-    }
-
-    // Update cart display for the cart overlay
-    function updateCartDisplayOverlay() {
-        cartItemsOverlay.innerHTML = ''; // Clear existing items
-        let total = 0;
-
-        if (cart.length === 0) {
-            emptyCartMessage.classList.remove('hidden');
-        } else {
-            emptyCartMessage.classList.add('hidden');
-            cart.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0';
-                itemElement.innerHTML = `
-                    <div>
-                        <p class="font-semibold">${item.name}</p>
-                        <p class="text-sm text-gray-500">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button class="remove-from-cart-overlay-btn text-red-500 hover:text-red-700 text-lg" data-index="${index}">&times;</button>
-                    </div>
-                `;
-                cartItemsOverlay.appendChild(itemElement);
-                total += item.price * item.quantity;
-            });
-        }
-        cartTotalOverlay.textContent = `EGP ${total.toFixed(2)}`;
-        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-
-        // Add event listeners for remove buttons in overlay
-        document.querySelectorAll('.remove-from-cart-overlay-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                const indexToRemove = parseInt(event.target.dataset.index);
-                removeFromCart(indexToRemove);
-            });
+            const itemElement = document.createElement('div');
+            itemElement.className = 'flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0';
+            itemElement.innerHTML = `
+                <div>
+                    <p class="font-semibold">${item.name}</p>
+                    <p class="text-sm text-gray-500">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="remove-from-cart-overlay-btn text-red-500 hover:text-red-700 text-lg" data-index="${index}">&times;</button>
+                </div>
+            `;
+            cartItemsOverlay.appendChild(itemElement);
+            total += item.price * item.quantity;
         });
     }
+    cartTotalOverlay.textContent = `EGP ${total.toFixed(2)}`;
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-
-    // Remove item from cart
-    function removeFromCart(index) {
-      const item = cart[index];
-      cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      updateCart(); // Update main cart section
-      updateCartDisplayOverlay(); // Update cart overlay
-      showCustomAlert(`${item.name} (${item.size}) removed from cart.`);
-    }
-
-    // Navigation: Show/hide sections
-    function showSection(sectionId) {
-      // Hide all sections first
-      [homeSection, productsSection, aboutSection, contactSection, cartSection, checkoutSection, policySection, supportSection].forEach(section => {
-        if (section) section.classList.add('hidden');
-      });
-      // Show the target section
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.classList.remove('hidden');
-        // Scroll to the top of the newly shown section for better UX, considering the fixed navbar.
-        const navbarHeight = document.querySelector('nav').offsetHeight;
-        const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-        window.scrollTo({ top: sectionTop, behavior: 'smooth' });
-      }
-
-      // Close any open overlays/modals when navigating to a section
-      leftSlideMenuOverlay.classList.remove('open');
-      searchOverlay.classList.remove('open');
-      cartOverlay.classList.remove('open');
-      signupModal.classList.remove('open');
-      signupModal.classList.add('hidden'); // Ensure hidden class is also added
-      document.body.style.overflow = 'auto'; // Re-enable body scroll
-
-      // If navigating to products, ensure search bar is cleared and a default category is shown
-      if (sectionId === 'products') {
-        overlaySearchBar.value = ''; // Clear overlay search bar
-        // displayProducts('stainless-steel'); // This is now handled by the menu click
-      }
-    }
-
-
-    // Navigation link handlers for nav links in the left slide menu
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const sectionId = link.getAttribute('href').substring(1);
-        showSection(sectionId);
-      });
-    });
-
-    // Sylo Logo click to home
-    syloLogo.addEventListener('click', (e) => {
-        e.preventDefault();
-        showSection('home');
-    });
-
-    // Explicitly handle Shop All button click
-    shopNowBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      displayProducts('all'); // Show all products
-      showSection('products');
-    });
-
-    // Handle individual product category links (inside left slide menu)
-    document.querySelectorAll('.product-category-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const category = e.target.dataset.category;
-            displayProducts(category); // Display specific category products
-            showSection('products'); // Navigate to products section
-            toggleLeftSlideMenu(); // Close left menu
+    // Add event listeners for remove buttons in overlay
+    document.querySelectorAll('.remove-from-cart-overlay-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const indexToRemove = parseInt(event.target.dataset.index);
+            removeFromCart(indexToRemove);
         });
     });
+}
 
-    // Handle "Products" toggle in left slide menu (to expand/collapse ONLY)
-    productsMenuToggleInSlide.addEventListener('click', (e) => {
+
+// Remove item from cart
+function removeFromCart(index) {
+  const item = cart[index];
+  cart.splice(index, 1);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart(); // Update main cart section
+  updateCartDisplayOverlay(); // Update cart overlay
+  showCustomAlert(`${item.name} (${item.size}) removed from cart.`);
+}
+
+// Navigation: Show/hide sections
+function showSection(sectionId) {
+  // Hide all sections first
+  [homeSection, productsSection, aboutSection, contactSection, cartSection, checkoutSection, policySection, supportSection].forEach(section => {
+    if (section) section.classList.add('hidden');
+  });
+  // Show the target section
+  const targetSection = document.getElementById(sectionId);
+  if (targetSection) {
+    targetSection.classList.remove('hidden');
+    // Scroll to the top of the newly shown section for better UX, considering the fixed navbar.
+    const navbarHeight = document.querySelector('nav').offsetHeight;
+    const sectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+  }
+
+  // Close any open overlays/modals when navigating to a section
+  leftSlideMenuOverlay.classList.remove('open');
+  searchOverlay.classList.remove('open');
+  cartOverlay.classList.remove('open');
+  signupModal.classList.remove('open');
+  signupModal.classList.add('hidden'); // Ensure hidden class is also added
+  document.body.style.overflow = 'auto'; // Re-enable body scroll
+
+  // If navigating to products, ensure search bar is cleared and a default category is shown
+  if (sectionId === 'products') {
+    overlaySearchBar.value = ''; // Clear overlay search bar
+    // displayProducts('stainless-steel'); // This is now handled by the menu click
+  }
+}
+
+
+// Navigation link handlers for nav links in the left slide menu
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sectionId = link.getAttribute('href').substring(1);
+    showSection(sectionId);
+  });
+});
+
+// Sylo Logo click to home
+syloLogo.addEventListener('click', (e) => {
+    e.preventDefault();
+    showSection('home');
+});
+
+// Explicitly handle Shop All button click
+shopNowBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  displayProducts('all'); // Show all products
+  showSection('products');
+});
+
+// Handle individual product category links (inside left slide menu)
+document.querySelectorAll('.product-category-link').forEach(link => {
+    link.addEventListener('click', (e) => {
         e.preventDefault();
-        productsDropdownInSlide.classList.toggle('active');
-        productsMenuToggleInSlide.querySelector('i').classList.toggle('rotate-180'); // Rotate arrow icon
-        // Removed the displayProducts('all') and showSection('products') calls from here
+        const category = e.target.dataset.category;
+        displayProducts(category); // Display specific category products
+        showSection('products'); // Navigate to products section
+        toggleLeftSlideMenu(); // Close left menu
     });
+});
+
+// Handle "Products" toggle in left slide menu (to expand/collapse ONLY)
+productsMenuToggleInSlide.addEventListener('click', (e) => {
+    e.preventDefault();
+    productsDropdownInSlide.classList.toggle('active');
+    productsMenuToggleInSlide.querySelector('i').classList.toggle('rotate-180'); // Rotate arrow icon
+    // Removed the displayProducts('all') and showSection('products') calls from here
+});
 
 
-    // Show checkout section with shipping fee
-    checkoutBtn.addEventListener('click', () => {
-      showSection('checkout'); // Use showSection for consistency
-      checkoutItems.innerHTML = '';
-      let subtotal = 0;
-      cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-        const checkoutItem = document.createElement('div');
-        checkoutItem.className = 'flex justify-between bg-white p-4 rounded-lg shadow';
-        checkoutItem.innerHTML = `
-          <div>
-            <h3 class="text-lg font-semibold text-black">${item.name} (${item.size})</h3>
-            <p class="text-gray-600">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
-          </div>
-        `;
-        checkoutItems.appendChild(checkoutItem);
-      });
-      // Update total with shipping fee based on selected city
-      const selectedCity = checkoutCity.value;
-      const shippingFee = shippingFees[selectedCity] || 0; // Default to 0 if no city selected initially
-      const total = subtotal + shippingFee;
-      checkoutTotal.textContent = `Subtotal: EGP ${subtotal.toFixed(2)} | Shipping: ${shippingFee.toFixed(2)} EGP | Total: EGP ${total.toFixed(2)}`;
-    });
+// Show checkout section with shipping fee
+checkoutBtn.addEventListener('click', () => {
+  showSection('checkout'); // Use showSection for consistency
+  checkoutItems.innerHTML = '';
+  let subtotal = 0;
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+    const checkoutItem = document.createElement('div');
+    checkoutItem.className = 'flex justify-between bg-white p-4 rounded-lg shadow';
+    checkoutItem.innerHTML = `
+      <div>
+        <h3 class="text-lg font-semibold text-black">${item.name} (${item.size})</h3>
+        <p class="text-gray-600">EGP ${item.price.toFixed(2)} x ${item.quantity}</p>
+      </div>
+    `;
+    checkoutItems.appendChild(checkoutItem);
+  });
+  // Update total with shipping fee based on selected city
+  const selectedCity = checkoutCity.value;
+  const shippingFee = shippingFees[selectedCity] || 0; // Default to 0 if no city selected initially
+  const total = subtotal + shippingFee;
+  checkoutTotal.textContent = `Subtotal: EGP ${subtotal.toFixed(2)} | Shipping: ${shippingFee.toFixed(2)} EGP | Total: EGP ${total.toFixed(2)}`;
+});
 
-    // Handle checkout from overlay
-    proceedToCheckoutOverlayBtn.addEventListener('click', () => {
-        toggleCartOverlay(); // Close cart overlay
-        showSection('checkout'); // Navigate to checkout section
-    });
-
-
-    // Update checkout total when city changes
-    checkoutCity.addEventListener('change', () => {
-      let subtotal = 0;
-      cart.forEach(item => {
-        subtotal += item.price * item.quantity;
-      });
-      const selectedCity = checkoutCity.value;
-      const shippingFee = shippingFees[selectedCity] || 0;
-      const total = subtotal + shippingFee;
-      checkoutTotal.textContent = `Subtotal: EGP ${subtotal.toFixed(2)} | Shipping: ${shippingFee.toFixed(2)} EGP | Total: EGP ${total.toFixed(2)}`;
-    });
-
-    // Handle checkout form submission
-    placeOrderBtn.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevent default form submission
-
-      const fullNameInput = document.getElementById('checkout-full-name');
-      const emailInput = document.getElementById('checkout-email');
-      const streetAddressInput = document.getElementById('checkout-street-address');
-      const citySelect = document.getElementById('checkout-city');
-
-      // Basic validation checks for checkout form
-      if (!fullNameInput.value.trim()) {
-        showCustomAlert('Please enter your full name.');
-        fullNameInput.focus();
-        return;
-      }
-
-      if (!emailInput.value.trim()) {
-        showCustomAlert('Please enter your email address.');
-        emailInput.focus();
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailInput.value.trim())) {
-        showCustomAlert('Please enter a valid email address.');
-        emailInput.focus();
-        return;
-      }
-
-      if (citySelect.value === "" || citySelect.value === "Select your city...") {
-        showCustomAlert('Please select a city.');
-        citySelect.focus();
-        return;
-      }
-
-      if (!streetAddressInput.value.trim()) {
-        showCustomAlert('Please enter your street address.');
-        streetAddressInput.focus();
-        return;
-      }
-
-      // If all validations pass
-      showCustomAlert('Order placed successfully! Thank you for shopping with Sylo.');
-      cart = [];
-      localStorage.setItem('cart', JSON.stringify(cart));
-      showSection('home');
-      updateCart(); // Update cart display (e.g., cart count in nav)
-      updateCartDisplayOverlay(); // Update cart overlay
-      // Reset checkout form fields
-      fullNameInput.value = '';
-      emailInput.value = '';
-      citySelect.value = '';
-      streetAddressInput.value = '';
-      document.getElementById('checkout-additional-details').value = '';
-      checkoutTotal.textContent = ''; // Clear checkout total display
-    });
+// Handle checkout from overlay
+proceedToCheckoutOverlayBtn.addEventListener('click', () => {
+    toggleCartOverlay(); // Close cart overlay
+    showSection('checkout'); // Navigate to checkout section
+});
 
 
-    // Close product modal listeners
-    closeModalTopBtn.addEventListener('click', closeModal);
-    closeModalBottomBtn.addEventListener('click', closeModal);
-    // Also close modal if user clicks outside of it (on the overlay)
-    productModal.addEventListener('click', (event) => {
-        if (event.target === productModal) {
-            closeModal();
-        }
-    });
+// Update checkout total when city changes
+checkoutCity.addEventListener('change', () => {
+  let subtotal = 0;
+  cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+  });
+  const selectedCity = checkoutCity.value;
+  const shippingFee = shippingFees[selectedCity] || 0;
+  const total = subtotal + shippingFee;
+  checkoutTotal.textContent = `Subtotal: EGP ${subtotal.toFixed(2)} | Shipping: ${shippingFee.toFixed(2)} EGP | Total: EGP ${total.toFixed(2)}`;
+});
 
-    // --- Form Validations ---
-    const signupForm = document.getElementById('signup-form');
-    const signupNameInput = document.getElementById('signup-name');
-    const signupEmailInput = document.getElementById('signup-email');
-    const signupPasswordInput = document.getElementById('signup-password');
+// Handle checkout form submission
+placeOrderBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent default form submission
 
-    signupForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        let isValid = true;
+  const fullNameInput = document.getElementById('checkout-full-name');
+  const emailInput = document.getElementById('checkout-email');
+  const streetAddressInput = document.getElementById('checkout-street-address');
+  const citySelect = document.getElementById('checkout-city');
 
-        if (signupNameInput.value.trim() === '') {
-            showCustomAlert('Please enter your name for sign up.');
-            signupNameInput.focus();
-            isValid = false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signupEmailInput.value.trim())) {
-            showCustomAlert('Please enter a valid email address for sign up.');
-            signupEmailInput.focus();
-            isValid = false;
-        } else if (signupPasswordInput.value.length < 6) {
-            showCustomAlert('Password must be at least 6 characters for sign up.');
-            signupPasswordInput.focus();
-            isValid = false;
-        }
+  // Basic validation checks for checkout form
+  if (!fullNameInput.value.trim()) {
+    showCustomAlert('Please enter your full name.');
+    fullNameInput.focus();
+    return;
+  }
 
-        if (isValid) {
-            console.log('Sign Up Form Submitted:', {
-                name: signupNameInput.value,
-                email: signupEmailInput.value,
-                password: signupPasswordInput.value // In a real app, hash this before sending!
+  if (!emailInput.value.trim()) {
+    showCustomAlert('Please enter your email address.');
+    emailInput.focus();
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(emailInput.value.trim())) {
+    showCustomAlert('Please enter a valid email address.');
+    emailInput.focus();
+    return;
+  }
+
+  if (citySelect.value === "" || citySelect.value === "Select your city...") {
+    showCustomAlert('Please select a city.');
+    citySelect.focus();
+    return;
+  }
+
+  if (!streetAddressInput.value.trim()) {
+    showCustomAlert('Please enter your street address.');
+    streetAddressInput.focus();
+    return;
+  }
+
+  // If all validations pass
+  showCustomAlert('Order placed successfully! Thank you for shopping with Sylo.');
+  cart = [];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  showSection('home');
+  updateCart(); // Update cart display (e.g., cart count in nav)
+  updateCartDisplayOverlay(); // Update cart overlay
+  // Reset checkout form fields
+  fullNameInput.value = '';
+  emailInput.value = '';
+  citySelect.value = '';
+  streetAddressInput.value = '';
+  document.getElementById('checkout-additional-details').value = '';
+  checkoutTotal.textContent = ''; // Clear checkout total display
+});
+
+
+// Close product modal listeners
+closeModalTopBtn.addEventListener('click', closeModal);
+closeModalBottomBtn.addEventListener('click', closeModal);
+// Also close modal if user clicks outside of it (on the overlay)
+productModal.addEventListener('click', (event) => {
+    if (event.target === productModal) {
+        closeModal();
+    }
+});
+
+// --- Form Validations ---
+const signupForm = document.getElementById('signup-form');
+const signupNameInput = document.getElementById('signup-name');
+const signupEmailInput = document.getElementById('signup-email');
+const signupPasswordInput = document.getElementById('signup-password');
+
+// Replace the old signupForm.addEventListener with this new one
+signupForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Client-side validation (already exists, keep this part)
+    let isValid = true;
+    if (signupNameInput.value.trim() === '') {
+        showCustomAlert('Please enter your name for sign up.');
+        signupNameInput.focus();
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(signupEmailInput.value.trim())) {
+        showCustomAlert('Please enter a valid email address for sign up.');
+        signupEmailInput.focus();
+        isValid = false;
+    } else if (signupPasswordInput.value.length < 6) {
+        showCustomAlert('Password must be at least 6 characters for sign up.');
+        signupPasswordInput.focus();
+        isValid = false;
+    }
+
+    if (!isValid) {
+        return; // Stop if client-side validation fails
+    }
+
+    // Prepare form data for sending to PHP
+    const formData = new FormData();
+    formData.append('name', signupNameInput.value.trim());
+    formData.append('email', signupEmailInput.value.trim());
+    formData.append('password', signupPasswordInput.value); // Don't trim password here
+
+    // Send data to signup.php
+    fetch('signup.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If the response is not OK (e.g., 400, 500 status), throw an error
+            return response.json().then(errorData => {
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
             });
-            showCustomAlert('Thank you for signing up!');
+        }
+        return response.json(); // Parse JSON response from PHP
+    })
+    .then(data => {
+        showCustomAlert(data.message); // Show message from PHP
+        if (data.success) {
             signupForm.reset();
-            toggleSignupModal(); // Close modal after successful signup
+            toggleSignupModal(); // Close modal on success
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showCustomAlert(error.message || 'An error occurred. Please try again.');
     });
+});
 
-    const loginForm = document.getElementById('login-form');
-    const loginEmailInput = document.getElementById('login-email');
-    const loginPasswordInput = document.getElementById('login-password');
 
-    loginForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        let isValid = true;
+const loginForm = document.getElementById('login-form');
+const loginEmailInput = document.getElementById('login-email');
+const loginPasswordInput = document.getElementById('login-password');
 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmailInput.value.trim())) {
-            showCustomAlert('Please enter a valid email address for login.');
-            loginEmailInput.focus();
-            isValid = false;
-        } else if (loginPasswordInput.value.length === 0) { // Simple check for password presence
-            showCustomAlert('Please enter your password for login.');
-            loginPasswordInput.focus();
-            isValid = false;
-        }
+// Replace the old loginForm.addEventListener with this new one
+loginForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-        if (isValid) {
-            // This is a client-side simulation. In a real app, you'd send these credentials to your PHP backend.
-            console.log('Login Form Submitted:', {
-                email: loginEmailInput.value,
-                password: loginPasswordInput.value // In a real app, send securely (e.g., hashed)
+    // Client-side validation (already exists, keep this part)
+    let isValid = true;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(loginEmailInput.value.trim())) {
+        showCustomAlert('Please enter a valid email address for login.');
+        loginEmailInput.focus();
+        isValid = false;
+    } else if (loginPasswordInput.value.length === 0) {
+        showCustomAlert('Please enter your password for login.');
+        loginPasswordInput.focus();
+        isValid = false;
+    }
+
+    if (!isValid) {
+        return; // Stop if client-side validation fails
+    }
+
+    // Prepare form data for sending to PHP
+    const formData = new FormData();
+    formData.append('email', loginEmailInput.value.trim());
+    formData.append('password', loginPasswordInput.value);
+
+    // Send data to login.php
+    fetch('login.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If the response is not OK, try to parse error message from JSON
+            return response.json().then(errorData => {
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
             });
-            showCustomAlert('Login successful! Welcome back!');
+        }
+        return response.json(); // Parse JSON response from PHP
+    })
+    .then(data => {
+        showCustomAlert(data.message); // Show message from PHP
+        if (data.success) {
             loginForm.reset();
-            toggleSignupModal(); // Close modal after successful login
-            // You might want to update UI to show "Logged In" state here
+            toggleSignupModal(); // Close modal on success
+            // You might want to update UI to show "Logged In" state here,
+            // e.g., change "Sign Up" button to "Welcome, [User Name]"
+            // For now, it just closes the modal.
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showCustomAlert(error.message || 'An error occurred. Please try again.');
     });
+});
 
 
-    const contactForm = document.getElementById('contact-form');
-    const contactNameInput = document.getElementById('contact-name');
-    const contactEmailInput = document.getElementById('contact-email');
-    const contactMessageInput = document.getElementById('contact-message');
+const contactForm = document.getElementById('contact-form');
+const contactNameInput = document.getElementById('contact-name');
+const contactEmailInput = document.getElementById('contact-email');
+const contactMessageInput = document.getElementById('contact-message');
 
-    contactForm.addEventListener('submit', function(event) {
-        // Formspree handles the actual submission, we just validate client-side
-        let isValid = true;
+contactForm.addEventListener('submit', function(event) {
+    // Formspree handles the actual submission, we just validate client-side
+    let isValid = true;
 
-        if (contactNameInput.value.trim() === '') {
-            showCustomAlert('Please enter your name for contact form.');
-            contactNameInput.focus();
-            isValid = false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmailInput.value.trim())) {
-            showCustomAlert('Please enter a valid email address for contact form.');
-            contactEmailInput.focus();
-            isValid = false;
-        } else if (contactMessageInput.value.trim() === '') {
-            showCustomAlert('Please enter your message for contact form.');
-            contactMessageInput.focus();
-            isValid = false;
-        }
+    if (contactNameInput.value.trim() === '') {
+        showCustomAlert('Please enter your name for contact form.');
+        contactNameInput.focus();
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmailInput.value.trim())) {
+        showCustomAlert('Please enter a valid email address for contact form.');
+        contactEmailInput.focus();
+        isValid = false;
+    } else if (contactMessageInput.value.trim() === '') {
+        showCustomAlert('Please enter your message for contact form.');
+        contactMessageInput.focus();
+        isValid = false;
+    }
 
-        if (!isValid) {
-            event.preventDefault(); // Prevent Formspree submission if validation fails
-            console.log('Contact form validation failed. Preventing submission.');
-        } else {
-            console.log('Contact form validation passed. Allowing Formspree submission.');
-            // If valid, Formspree will handle it. Show success message after a short delay.
-            // This is a client-side indication, Formspree will send its own confirmation.
-            setTimeout(() => {
-                showCustomAlert('Your message has been sent!');
-                contactForm.reset();
-            }, 100); // Small delay to allow Formspree to potentially start
-        }
-    });
+    if (!isValid) {
+        event.preventDefault(); // Prevent Formspree submission if validation fails
+        console.log('Contact form validation failed. Preventing submission.');
+    } else {
+        console.log('Contact form validation passed. Allowing Formspree submission.');
+        // If valid, Formspree will handle it. Show success message after a short delay.
+        // This is a client-side simulation for the success message.
+        // In a real application, you would handle the Formspree response.
+        setTimeout(() => {
+            showCustomAlert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        }, 500); // Give Formspree a moment to process
+    }
+});
 
 
-    const supportForm = document.getElementById('support-form');
-    const supportNameInput = document.getElementById('support-name');
-    const supportEmailInput = document.getElementById('support-email');
-    const supportMessageInput = document.getElementById('support-message');
+const supportForm = document.getElementById('support-form');
+const supportNameInput = document.getElementById('support-name');
+const supportEmailInput = document.getElementById('support-email');
+const supportMessageInput = document.getElementById('support-message');
 
-    supportForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        let isValid = true;
+// Replace the old supportForm.addEventListener with this new one
+supportForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-        if (supportNameInput.value.trim() === '') {
-            showCustomAlert('Please enter your name for support request.');
-            supportNameInput.focus();
-            isValid = false;
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(supportEmailInput.value.trim())) {
-            showCustomAlert('Please enter a valid email address for support request.');
-            supportEmailInput.focus();
-            isValid = false;
-        } else if (supportMessageInput.value.trim() === '') {
-            showCustomAlert('Please enter your message for support request.');
-            supportMessageInput.focus();
-            isValid = false;
-        }
+    // Client-side validation (already exists, keep this part)
+    let isValid = true;
+    if (supportNameInput.value.trim() === '') {
+        showCustomAlert('Please enter your name for support request.');
+        supportNameInput.focus();
+        isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(supportEmailInput.value.trim())) {
+        showCustomAlert('Please enter a valid email address for support request.');
+        supportEmailInput.focus();
+        isValid = false;
+    } else if (supportMessageInput.value.trim() === '') {
+        showCustomAlert('Please enter your message for support request.');
+        supportMessageInput.focus();
+        isValid = false;
+    }
 
-        if (isValid) {
-            console.log('Support Form Submitted:', {
-                name: supportNameInput.value,
-                email: supportEmailInput.value,
-                message: supportMessageInput.value
+    if (!isValid) {
+        return; // Stop if client-side validation fails
+    }
+
+    // Prepare form data for sending to PHP
+    const formData = new FormData();
+    formData.append('name', supportNameInput.value.trim());
+    formData.append('email', supportEmailInput.value.trim());
+    formData.append('message', supportMessageInput.value.trim());
+
+    // Send data to submit_support.php
+    fetch('submit_support.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            // If the response is not OK, try to parse error message from JSON
+            return response.json().then(errorData => {
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
             });
-            showCustomAlert('Your support request has been submitted!');
+        }
+        return response.json(); // Parse JSON response from PHP
+    })
+    .then(data => {
+        showCustomAlert(data.message); // Show message from PHP
+        if (data.success) {
             supportForm.reset();
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showCustomAlert(error.message || 'An error occurred. Please try again.');
     });
+});
 
 
-    // Initialize the page
-    displayProducts('all'); // Display all products initially
-    updateCart(); // Update main cart display
-    updateCartDisplayOverlay(); // Update cart overlay display
-    showSection('home'); // Ensure home section is shown on load
+// --- Initial Render & Setup ---
+document.addEventListener('DOMContentLoaded', () => {
+    updateCart(); // Initialize cart count and display on page load
+    showSection('home'); // Show home section by default
 
-    // Add fallback for images
-    document.addEventListener('error', function (event) {
-        if (event.target.tagName.toLowerCase() === 'img') {
-            event.target.src = 'https://placehold.co/300x200/E2E8F0/AAAAAA?text=Image+Error';
-        }
-    }, true);
+    // Ensure overlays and custom alert start hidden
+    leftSlideMenuOverlay.classList.remove('open');
+    searchOverlay.classList.remove('open');
+    cartOverlay.classList.remove('open');
+    signupModal.classList.remove('open');
+    signupModal.classList.add('hidden'); // Ensure hidden class is also added
+    customAlertOverlay.classList.add('hidden');
+
+    // Initial display of products (e.g., all products)
+    displayProducts('all');
+});
+
+
 
   </script>
 </body>
